@@ -37,4 +37,4 @@ To get a list of all the available specs, use the --listfields option
 
 After paring down and sorting your fields, you can pass in the filename as an option.
 
-    $ autospecs --usefields myfields.json toyota camry Camry-Sedan 377158 > myfields.json
+    $ autospecs --usefields myfields.json toyota camry Camry-Sedan 377158
