@@ -1,7 +1,7 @@
+from bs4 import BeautifulSoup
 import click
 import json
 import yaml
-from bs4 import BeautifulSoup
 import urllib
 
 
@@ -76,20 +76,31 @@ def get_trims(make, model, style):
 @click.argument('trim', required=False)
 @click.option('--listfields', is_flag=True, help='Show a list of all fields instead of the full specs')
 @click.option('--usefields', help='Use only the fields listed in the provide file which contains a JSON list')
-def main(make, model, style, trim, listfields, usefields):
+@click.option('--csv', is_flag=True, help='Output CSV in the order specified by --usefields file')
+def main(make, model, style, trim, listfields, usefields, csv):
 
     if(make and model and style and trim):
         specs = get_specs(make, model, style, trim)
         if(usefields):
             data = open(usefields).read()
             fields = json.loads(data)
-            newspecs = {}
-            for field in fields:
-                try:
-                    newspecs[field] = specs[field]
-                except KeyError:
-                    newspecs[field] = None
-            specs = newspecs
+            if(csv):
+                newspecs = []
+                for field in fields:
+                    try:
+                        newspecs.append(specs[field])
+                    except KeyError:
+                        newspecs.append("")
+                print ', '.join(newspecs)
+                return
+            else:
+                newspecs = {}
+                for field in fields:
+                    try:
+                        newspecs[field] = specs[field]
+                    except KeyError:
+                        newspecs[field] = None
+                specs = newspecs
         if(listfields):
             print json.dumps(sorted(specs.keys()), indent=4)
         else:

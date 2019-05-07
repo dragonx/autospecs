@@ -1,0 +1,20 @@
+[
+    "trim",
+    "DUMMY",
+    "DUMMY",
+    "SAE Net Torque @ RPM", 
+    "SAE Net Horsepower @ RPM", 
+    "Base Curb Weight", 
+    "DUMMY",
+    "DUMMY",
+    "DUMMY",
+    "DUMMY",
+    "EPA Fuel Economy Est - City", 
+    "EPA Fuel Economy Est - Hwy", 
+    "Length, Overall", 
+    "Wheelbase", 
+    "Turning Diameter - Curb to Curb", 
+    "Min Ground Clearance", 
+    "Cargo Volume to Seat 2", 
+    "price"
+]
